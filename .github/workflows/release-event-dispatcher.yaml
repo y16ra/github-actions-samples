@@ -14,5 +14,5 @@ jobs:
         run: |
           curl -X POST https://api.github.com/repos/${{ env.REPOSITORY }}/dispatches \
             -H "Accept: application/vnd.github.everest-preview+json" \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Authorization: token ${{ secrets.REPO_ACCESS_TOKEN }}" \
             --data '{"event_type": "publish", "client_payload": { "version": "${{ github.event.release.tag_name }}" }}'
