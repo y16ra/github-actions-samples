@@ -24,3 +24,10 @@ jobs:
         run: echo ${TAG#refs/*/}
       - name: Print release version
         run: echo $RELEASE_VERSION
+      - name: get commit id
+        run: |
+          echo "COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_ENV
+      - name: Print commit id
+        run: |
+          echo ${{ env.COMMIT_ID }}
+          echo $COMMIT_ID
