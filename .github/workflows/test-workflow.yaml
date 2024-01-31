@@ -7,6 +7,8 @@ on:
         description: 'Name of tag'
         required: true
 
+env:
+  RELEASE_VERSION: ${{ github.event.client_payload.version }}
 
 jobs:
   test-job:
@@ -19,4 +21,6 @@ jobs:
         run:
           echo "VERSION=${TAG#refs/*/}" >> $GITHUB_ENV
       - name: Print version
-        run: echo ${{ env.VERSION }}
+        run: echo ${TAG#refs/*/}
+      - name: Print release version
+        run: echo $RELEASE_VERSION
