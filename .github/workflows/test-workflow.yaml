@@ -2,17 +2,21 @@ name: Test workfow
 
 on:
   workflow_dispatch:
+    inputs:
+      name:
+        description: 'Name of tag'
+        required: true
+
 
 jobs:
   test-job:
     runs-on: ubuntu-latest
     env:
-      TAG: refs/tags/v1.0.0
+      TAG: ${{ github.event.inputs.name }}
       VERSION: 0.0.1
     steps:
       - name: Extract version from tag reference
         run:
-          echo "VERSION=${TAG#refs/tags/}" >> $GITHUB_ENV
+          echo "VERSION=${TAG#refs/*/}" >> $GITHUB_ENV
       - name: Print version
         run: echo ${{ env.VERSION }}
-
