@@ -10,7 +10,7 @@ jobs:
       TAG: refs/tags/v1.0.0
     steps:
       - name: Extract version from tag reference
-        run: echo "VERSION=$(echo ${{ env.TAG#refs/tags/ }})" >> $GITHUB_ENV
+        run: echo "VERSION=$(echo ${{ env.TAG }}#refs/tags/)" >> $GITHUB_ENV
       - name: Print version
         run: echo $VERSION
 
