@@ -8,9 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TAG: refs/tags/v1.0.0
+      VERSION: 0.0.1
     steps:
       - name: Extract version from tag reference
-        run: echo "VERSION=$(echo ${{ env.TAG }}#refs/tags/)" >> $GITHUB_ENV
+        run:
+          echo "VERSION=${TAG#refs/tags/}" >> $GITHUB_ENV
       - name: Print version
-        run: echo $VERSION
+        run: echo ${{ env.VERSION }}
 
