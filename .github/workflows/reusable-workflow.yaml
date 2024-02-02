@@ -41,3 +41,9 @@ jobs:
         id: step4
         run: |
           echo "output1=hello" >> $GITHUB_OUTPUT
+      - name: Step 5
+        id: step5
+        run: |
+          echo "Step 5"
+          echo "var: ${{ vars.REPO_VAR }}"
+
