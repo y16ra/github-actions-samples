@@ -27,4 +27,6 @@ jobs:
           echo "Step 2"
           echo "Input 2: ${{ inputs.input2 }}"
       - name: Step 3
-        run: echo "Step 3"
+        run: |
+          echo "Step 3"
+          echo "secret: ${{ secrets.TEST_SECRET }}"
