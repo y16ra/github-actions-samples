@@ -1,0 +1,19 @@
+name: Tag Push Workflow
+
+on:
+  push:
+    tags:
+      - '*'  # 全てのタグに反応します
+
+jobs:
+  log-tag-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get tag info
+        run: |
+          echo "Triggered by tag: ${github.ref_name}"
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Commit SHA: $GITHUB_SHA"
