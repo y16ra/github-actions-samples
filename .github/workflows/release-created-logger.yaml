@@ -2,7 +2,7 @@ name: Release Created Logger
 
 on:
   release:
-    types: [created]
+    types: [created, published]
 
 jobs:
   log_event:
