@@ -1,0 +1,21 @@
+name: Call reusable workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-reusable-workflow:
+    uses: ./.github/workflows/reusable-workflow.yaml
+    with:
+      input1: value1
+      input2: value2
+    secrets: inherit
+  job1:
+    runs-on: ubuntu-latest
+    needs: call-reusable-workflow
+    steps:
+      - name: Step 1
+        run: |
+          echo "Step 1"
+          echo "${{ needs.call-reusable-workflow.outputs.output1 }} ${{ vars.REPO_VAR }}"
+
