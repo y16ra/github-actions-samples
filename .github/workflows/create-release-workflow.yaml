@@ -23,4 +23,4 @@ jobs:
       - name: Create Release
         run: |
           echo "Creating release..."
-          gh release create ${{ steps.generate_release_tag.outputs.TAG_NAME }} --title "Release ${{ steps.generate_release_tag.outputs.TAG_NAME }}" --generate-notes --target main 
+          gh release create --draft ${{ steps.generate_release_tag.outputs.TAG_NAME }} --title "Release ${{ steps.generate_release_tag.outputs.TAG_NAME }}" --generate-notes --target main 
