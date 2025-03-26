@@ -1,0 +1,21 @@
+name: Release Created Logger
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  log_event:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log release event details
+        run: |
+          echo "Release Event Details:"
+          echo "Release ID: ${{ github.event.release.id }}"
+          echo "Release Tag: ${{ github.event.release.tag_name }}"
+          echo "Release Name: ${{ github.event.release.name }}"
+          echo "Release Body: ${{ github.event.release.body }}"
+          echo "Release Created At: ${{ github.event.release.created_at }}"
+          echo "Release Author: ${{ github.event.release.author.login }}"
+          echo "Is Draft: ${{ github.event.release.draft }}"
+          echo "Is Prerelease: ${{ github.event.release.prerelease }}" 
