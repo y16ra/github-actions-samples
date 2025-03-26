@@ -6,6 +6,8 @@ on:
 jobs:
   create-release:
     runs-on: ubuntu-latest
+    env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Generate release tag
         id: generate_release_tag
